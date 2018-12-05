@@ -1,6 +1,6 @@
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
-var ul = document.querySelector("ul");
+var list = document.querySelector("ul");
 var li = document.querySelectorAll("li");
 
 function inputLength() {
@@ -10,7 +10,7 @@ function inputLength() {
 function createListElement() {
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
-	ul.appendChild(li);
+	list.appendChild(li);
 	input.value = "";
 }
 
@@ -27,7 +27,7 @@ function addListAfterKeypress(event) {
 }
 
 // use event bubbling to add done class
-ul.addEventListener('click', function(event){
+list.addEventListener('click', function(event){
 	if (event.target.tagName === 'LI') {
 		if (event.target.classList.contains("done")) {
 			event.target.classList.remove('done');
