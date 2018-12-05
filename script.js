@@ -27,7 +27,7 @@ function addListAfterKeypress(event) {
 }
 
 // use event bubbling to add done class
-list.addEventListener('click', function(event){
+function toggleDoneClass(event) {
 	if (event.target.tagName === 'LI') {
 		if (event.target.classList.contains("done")) {
 			event.target.classList.remove('done');
@@ -35,8 +35,9 @@ list.addEventListener('click', function(event){
 			event.target.classList.add('done');
 		}
 	}
-});
+}
 
+list.addEventListener("click", toggleDoneClass);
 button.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
