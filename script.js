@@ -1,6 +1,6 @@
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
-var list = document.querySelector("ul");
+var list = document.querySelector("#list");
 var li = document.querySelectorAll("li");
 
 function inputLength() {
@@ -10,8 +10,16 @@ function inputLength() {
 function createListElement() {
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
+	addRemoveButton(li);
 	list.appendChild(li);
 	input.value = "";
+}
+
+function addRemoveButton(li) {
+	var remove = document.createElement("button");
+	remove.className = "remove";
+	remove.textContent = "Remove";
+	li.appendChild(remove);
 }
 
 function addListAfterClick() {
@@ -35,6 +43,10 @@ function toggleDoneClass(event) {
 			event.target.classList.add('done');
 		}
 	}
+}
+
+for (let i = 0; i < li.length; i++) {
+	addRemoveButton(li[i]);
 }
 
 list.addEventListener("click", toggleDoneClass);
