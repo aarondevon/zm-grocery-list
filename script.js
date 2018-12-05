@@ -45,11 +45,23 @@ function toggleDoneClass(event) {
 	}
 }
 
+// remove list item
+function removeListItem(event) {
+	if (event.target.classList.contains('remove')) {
+		let li = event.target.parentNode;
+		let ul = li.parentNode;
+		ul.removeChild(li);
+	}
+}
+
 for (let i = 0; i < li.length; i++) {
 	addRemoveButton(li[i]);
 }
 
-list.addEventListener("click", toggleDoneClass);
 button.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
+
+list.addEventListener("click", toggleDoneClass);
+
+list.addEventListener("click", removeListItem);
