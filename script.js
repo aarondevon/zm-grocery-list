@@ -26,16 +26,16 @@ function addListAfterKeypress(event) {
 	}
 }
 
-// loop through li to add done class
-for (let i = 0; i < li.length; i++) {
-	li[i].addEventListener('click', function() {
-		if (li[i].classList.contains("done")) {
-			li[i].classList.remove('done');
+// use event bubbling to add done class
+ul.addEventListener('click', function(event){
+	if (event.target.tagName === 'LI') {
+		if (event.target.classList.contains("done")) {
+			event.target.classList.remove('done');
 		} else {
-			li[i].classList.add('done');
+			event.target.classList.add('done');
 		}
-	})
-}
+	}
+});
 
 button.addEventListener("click", addListAfterClick);
 
